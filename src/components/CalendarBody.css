@@ -22,3 +22,9 @@
     color: white;
 }
 
+#calendar td.highlighted {
+    background-color:#999;
+}
+
+
+
