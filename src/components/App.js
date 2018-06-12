@@ -1,80 +1,57 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import './App.css';
-import CalendarBody from './CalendarBody';
-import NavBar from './NavBar';
-import Form from './Form';
-import { showForm, scheduleEvent } from '../actions';
+import {Route, withRouter} from 'react-router-dom';
 
-class App extends Component {
+import LandingPage from './landing-page';
+import Dashboard from './dashboard';
+import RegistrationPage from './registration-page';
+import {refreshAuthToken} from '../actions/auth';
 
-  // constructor(props){
-  //   super(props);
-  //   this.state={
-  //     addForm: false,
-  //     selectedWeekday: null,
-  //     selectedHour: null,
-  //     selectedTimeSlot: null,
-  //     events: {}
-  //   }
-  // }
+export class App extends React.Component {
+    componentDidUpdate(prevProps) {
+        if (!prevProps.loggedIn && this.props.loggedIn) {
+            // When we are logged in, refresh the auth token periodically
+            this.startPeriodicRefresh();
+        } else if (prevProps.loggedIn && !this.props.loggedIn) {
+            // Stop refreshing when we log out
+            this.stopPeriodicRefresh();
+        }
+    }
 
-  // onClickCell = ({weekday, hour, timeSlot}) => {
-  //   console.log(weekday, hour, timeSlot)
-  //   this.setState({
-  //     addForm: true,
-  //     selectedWeekday: weekday,
-  //     selectedHour:hour,
-  //     selectedTimeSlot: timeSlot
-  //   })
-  // }
+    componentWillUnmount() {
+        this.stopPeriodicRefresh();
+    }
 
-  // scheduleEvent = (eventToAdd) => {
-  //   console.log(eventToAdd);
-  //   // destructuring
-  //   const {events, selectedWeekday, selectedHour, selectedTimeSlot} = this.state;
-  //   console.log('events', events);
-  //   events[selectedWeekday] = events[selectedWeekday] || {};
-  //   events[selectedWeekday][selectedHour] = events[selectedWeekday][selectedHour] || {};
-  //   events[selectedWeekday][selectedHour][selectedTimeSlot] = eventToAdd;
+    startPeriodicRefresh() {
+        this.refreshInterval = setInterval(
+            () => this.props.dispatch(refreshAuthToken()),
+            60 * 60 * 1000 // One hour
+        );
+    }
 
-  //   console.log(`events is ${JSON.stringify(events)}`)
-  //   console.log(`events[selectedWeekday] is ${JSON.stringify(events[selectedWeekday])}`)
-  //   console.log(`events[selectedWeekday][selectedHour] is ${JSON.stringify(events[selectedWeekday][selectedHour])}`)
-  //   console.log(`events[selectedWeekday][selectedHour][selectedTimeSlot] is ${JSON.stringify(events[selectedWeekday][selectedHour][selectedTimeSlot])}`)
+    stopPeriodicRefresh() {
+        if (!this.refreshInterval) {
+            return;
+        }
 
-  //   this.setState({
-  //     addForm: false,
-  //     selectedWeekday: null,
-  //     selectedHour: null,
-  //     selectedTimeSlot:null,
-  //     events
-  //   })
-  // }
+        clearInterval(this.refreshInterval);
+    }
 
-  render() {
-    return (
-      <div className="App" id="background-image">
-        <h1>Schedule With Me</h1>
-        <br />
-        <NavBar />
-        <br />
-        {(this.props.selectedTimeSlots.length > 0) && <Form scheduleEvent={(eventToSchedule) => this.props.dispatch(scheduleEvent(eventToSchedule))}/>}
-        <br />
-        <CalendarBody 
-          events={this.props.events} 
-          onClickCell={(obj) => this.props.dispatch(showForm(obj))}
-          selectedTimeSlots={this.props.selectedTimeSlots}
-        />
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="app">
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/register" component={RegistrationPage} />
+            </div>
+        );
+    }
 }
 
-const mapReduxStoreToProps = reduxStore => ({
-  addForm: reduxStore.addForm,
-  events: reduxStore.events,
-  selectedTimeSlots: reduxStore.selectedTimeSlots
-})
+const mapStateToProps = state => ({
+    hasAuthToken: state.auth.authToken !== null,
+    loggedIn: state.auth.currentUser !== null
+});
 
-export default connect(mapReduxStoreToProps)(App);
+// Deal with update blocking - https://reacttraining.com/react-router/web/guides/dealing-with-update-blocking
+export default withRouter(connect(mapStateToProps)(App));
