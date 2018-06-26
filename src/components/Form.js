@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 //import './Form.css';
 
 class Form extends Component {
@@ -17,7 +18,11 @@ class Form extends Component {
 		this.props.scheduleEvent({
 			name: this.state.name,
 			where: this.state.where,
-			when: this.state.when
+			when: this.state.when,
+			weekday: this.props.weekday,
+			hour: this.props.hour,
+			timeSlot: this.props.timeSlot,
+			timeSlots: this.props.selectedTimeSlots,
 		})
 	}
 
@@ -60,4 +65,12 @@ class Form extends Component {
   }
 }
 
-export default Form;
+const mapStoreToProps = (store) => ({
+	//need to change to choose multiple cells at server end
+	selectedTimeSlots: store.main.selectedTimeSlots,
+	weekday: store.main.selectedTimeSlots[0].weekday,
+	hour: store.main.selectedTimeSlots[0].hour,
+	timeSlot: store.main.selectedTimeSlots[0].timeSlot,
+})
+
+export default connect(mapStoreToProps)(Form);

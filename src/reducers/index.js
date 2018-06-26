@@ -1,10 +1,7 @@
-import {SCHEDULE_EVENT, SHOW_FORM, DRAG_CELLS, FINISH_DRAGGING_CELLS} from '../actions';
+import {SHOW_FORM, DRAG_CELLS, FINISH_DRAGGING_CELLS, GET_EVENTS_SUCCESS, GET_EVENTS_FAILURE, DELETE_EVENTS_SUCCESS} from '../actions';
 
 const initialState = {
     addForm: false,
-    selectedWeekday: null,
-    selectedHour: null,
-    selectedTimeSlot: null,
     events: {},
     isMouseDown: false,
     highlighted: 'highlighted',
@@ -12,24 +9,6 @@ const initialState = {
 }
 
 export default (state=initialState, action) => {
-    if (action.type === SCHEDULE_EVENT) {
-        const events = Object.assign({}, state.events);
-        for (let i=0; i < state.selectedTimeSlots.length; i++ ) {
-            const timeSlotObj = state.selectedTimeSlots[i]
-            const {weekday, hour, timeSlot} = timeSlotObj;
-        
-         //create new event and copy it to the empty object (line 27: that's why we don't use action.events)
-
-        events[weekday] = events[weekday] || {};
-        events[weekday][hour] = events[weekday][hour] || {};
-        events[weekday][hour][timeSlot] = action.addEvent;
-        }
-console.log(events)
-        return Object.assign({}, state, {
-            selectedTimeSlots: [], // remove slots once submitted
-            events: events
-        })
-    }
 
     if (action.type === SHOW_FORM) {
         const {weekday, hour, timeSlot} = action;
@@ -72,6 +51,24 @@ console.log(events)
         return Object.assign({}, state, {
             isMouseDown: false,
             hightlighted: ''
+        })
+    }
+
+    if (action.type === GET_EVENTS_SUCCESS) {
+        return Object.assign({}, state, {
+            events: action.events
+        })
+    }
+
+    if (action.type === GET_EVENTS_FAILURE) {
+        return Object.assign({}, state, {
+            err: action.err
+        })
+    }
+
+    if (action.type === DELETE_EVENTS_SUCCESS) {
+        return Object.assign({}, state, {
+           // events: state.events.filter(event => event._id !== action.eventId)
         })
     }
 

@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './CalendarBody.css';
-import { ScheduleCell } from './ScheduleCell';
+import  ScheduleCell from './ScheduleCell';
+import { deleteEvents } from '../actions/index';
 
 const weekdays = ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const hoursOfDay = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 const timeSlots = [1,2];
 
 class CalendarBody extends Component {
-	constructor(props){
-		super(props);
-		this.state={}
-	}
 
   render() {
-	console.log("this.props.selectedTimeSlots", this.props.selectedTimeSlots);
-
     return (
       <div className="CalendarBody">
         <table id="calendar">
@@ -51,13 +47,12 @@ class CalendarBody extends Component {
 															scheduledCell=(
 																	<ScheduleCell 
 																		{...eventToRender}
+																		deleteEvents={() => this.props.dispatch(deleteEvents(eventToRender.id))}
 																	/>
 															)
 														}
 													}
 												}
-
-												// ... scheduledCell = <ScheduleCell ...>
 											}
 
 											
@@ -91,4 +86,4 @@ class CalendarBody extends Component {
   }
 }
 
-export default CalendarBody;
+export default connect()(CalendarBody);
