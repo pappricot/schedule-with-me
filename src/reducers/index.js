@@ -1,11 +1,13 @@
-import {SHOW_FORM, DRAG_CELLS, FINISH_DRAGGING_CELLS, GET_EVENTS_SUCCESS, GET_EVENTS_FAILURE, DELETE_EVENTS_SUCCESS} from '../actions';
+import {SHOW_FORM, DRAG_CELLS, FINISH_DRAGGING_CELLS, GET_EVENTS_SUCCESS, GET_EVENTS_FAILURE, DELETE_EVENTS_SUCCESS, REQUEST_EVENT_SUCCESS, CHANGE_WEEK} from '../actions';
+import moment from 'moment';
 
 const initialState = {
     addForm: false,
     events: {},
     isMouseDown: false,
     highlighted: 'highlighted',
-    selectedTimeSlots: []
+    selectedTimeSlots: [],
+    selectedWeekStartDate: moment().startOf('isoWeek').toDate() // start on Monday
 }
 
 export default (state=initialState, action) => {
@@ -69,6 +71,29 @@ export default (state=initialState, action) => {
     if (action.type === DELETE_EVENTS_SUCCESS) {
         return Object.assign({}, state, {
            // events: state.events.filter(event => event._id !== action.eventId)
+        })
+    }
+
+    if (action.type === REQUEST_EVENT_SUCCESS) {
+        return Object.assign({}, state, {
+            event: action.event
+        })
+    }
+
+    if (action.type === CHANGE_WEEK) {
+
+        let newDate;
+
+        if(action.back) {
+            newDate = moment(state.selectedWeekStartDate).subtract(7, 'days').toDate();
+        } else {
+            newDate = moment(state.selectedWeekStartDate).add(7, 'days').toDate();
+        }
+        console.log(newDate, 'newDate')
+        console.log(state.selectedWeekStartDate, 'old date')
+        return Object.assign({}, state, {
+            
+            selectedWeekStartDate: newDate 
         })
     }
 

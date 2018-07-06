@@ -100,3 +100,17 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             clearAuthToken(authToken);
         });
 };
+
+// export const logout = () => (dispatch, getState) => {
+//     dispatch(authRequest());
+//     const authToken = getState().auth.authToken;
+//     return (
+        
+//             // Reject any requests which don't return a 200 status, creating
+//             // errors which follow a consistent format
+//             .then(res => normalizeResponseErrors(res))
+//             .then(() => clearAuth())
+//             .then(clearAuthToken(authToken))
+//         })
+//     );
+// };

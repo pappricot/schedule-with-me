@@ -19,6 +19,24 @@ class NavBar extends Component {
                 <div className="dashboard-protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
+                <br />
+                  <button onClick={
+                          e => {e.preventDefault() // to stop bubbling up and prevent the form to show up
+                              this.props.onLogOut()
+                              //how to connect to logOUtPage to redirect to '/'?
+                          }            
+                      } 
+                  > 
+                  Log out
+                  </button>
+                  {/* <Redirect to="/" onClick={
+                          e => {e.stopPropagation() // to stop bubbling up and prevent the form to show up
+                              onLogOut()
+                              //how to connect to logOUtPage to redirect to '/'?
+                          } 
+                        }
+                  >
+                  Log out</Redirect> */}
       </div>
     );
   }

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './CalendarBody.css';
 import  ScheduleCell from './ScheduleCell';
-import { deleteEvents } from '../actions/index';
+import { deleteEvents, requestEvent, cancelEvent } from '../actions/index';
+import moment from 'moment';
 
-const weekdays = ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const weekdays = moment.weekdays(); //['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const hoursOfDay = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 const timeSlots = [1,2];
 
@@ -18,6 +19,7 @@ class CalendarBody extends Component {
 						<tr>
 							<th></th>
 							{weekdays.map((weekday, index) => {
+								console.log('weekday', weekday)
 								return (
 									
 										<th key={weekday}>
@@ -44,10 +46,13 @@ class CalendarBody extends Component {
 													if(this.props.events[weekday][hour]) {
 														if(this.props.events[weekday][hour][timeSlot]){
 															const eventToRender = this.props.events[weekday][hour][timeSlot];
+															console.log('eventToRender', eventToRender)
 															scheduledCell=(
 																	<ScheduleCell 
 																		{...eventToRender}
 																		deleteEvents={() => this.props.dispatch(deleteEvents(eventToRender.id))}
+																		requestEvent={() => this.props.dispatch(requestEvent(eventToRender.id))}
+																		cancelEvent={() => this.props.dispatch(cancelEvent(eventToRender.id))}
 																	/>
 															)
 														}
@@ -55,7 +60,7 @@ class CalendarBody extends Component {
 												}
 											}
 
-											
+
 											return (
 							
 												// make the cell that is selected distinguishable, set a class to change in css file

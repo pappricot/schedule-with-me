@@ -6,6 +6,7 @@ import {
     AUTH_ERROR
 } from '../actions/auth';
 
+import { clearAuthToken } from '../local-storage';
 const initialState = {
     authToken: null, // authToken !== null does not mean it has been validated
     currentUser: null,
@@ -19,6 +20,7 @@ export default function reducer(state = initialState, action) {
             authToken: action.authToken
         });
     } else if (action.type === CLEAR_AUTH) {
+        clearAuthToken();
         return Object.assign({}, state, {
             authToken: null,
             currentUser: null
