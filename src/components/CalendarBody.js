@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import './CalendarBody.css';
 import  ScheduleCell from './ScheduleCell';
 import { deleteEvents, requestEvent, cancelEvent } from '../actions/index';
+import { addSession } from '../actions/sessions';
 import moment from 'moment';
 
-const weekdays = moment.weekdays(); //['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const weekdays = ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const hoursOfDay = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 const timeSlots = [1,2];
 
@@ -20,12 +21,15 @@ class CalendarBody extends Component {
 							<th></th>
 							{weekdays.map((weekday, index) => {
 								console.log('weekday', weekday)
+								console.log(this.props.selectedWeekStartDate, 'selectedWeekStartDate')
+								const currentDay = moment(this.props.selectedWeekStartDate).add(index, 'days').format('dddd')
+								const currentDate = moment(this.props.selectedWeekStartDate).add(index, 'days').format('D')
 								return (
 									
 										<th key={weekday}>
-										<span className="day">{index+1}</span>
+										<span className="day">{currentDate}</span>
 										<br />
-										<span className="long">{weekday}</span>
+										<span className="long">{currentDay}</span>
 										</th>
 									
 								)}
@@ -52,6 +56,7 @@ class CalendarBody extends Component {
 																		{...eventToRender}
 																		deleteEvents={() => this.props.dispatch(deleteEvents(eventToRender.id))}
 																		requestEvent={() => this.props.dispatch(requestEvent(eventToRender.id))}
+																		onAddSessions={() => this.props.dispatch(addSession(eventToRender.id))}
 																		cancelEvent={() => this.props.dispatch(cancelEvent(eventToRender.id))}
 																	/>
 															)
@@ -91,4 +96,8 @@ class CalendarBody extends Component {
   }
 }
 
-export default connect()(CalendarBody);
+const mapStateToProps = (state) => ({
+	selectedWeekStartDate: state.main.selectedWeekStartDate
+})
+
+export default connect(mapStateToProps)(CalendarBody);

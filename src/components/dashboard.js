@@ -13,12 +13,55 @@ import RequiresLogin  from './requires-login';
 import WeekNavigation from './WeekNavigation';
 
 import {fetchProtectedData} from '../actions/protected-data';
+import Sessions from './Sessions/Sessions';
+
+
+
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.flattenEvents = this.flattenEvents.bind(this);
+  }
 
   componentDidMount() {
     this.props.dispatch(fetchProtectedData());
     this.props.dispatch(getEvents());
+  }
+
+  flattenEvents(eventsToFlatten) {
+  
+    const eventArr = [];
+    
+    const dayKeys = Object.keys(eventsToFlatten)
+    
+    for (let i = 0; i< dayKeys.length; i++) {
+      const dayKey = dayKeys[i];
+      const dayValue = eventsToFlatten[dayKey] 
+      const hourKeys = Object.keys(dayValue)
+      for(let j = 0; j < hourKeys.length; j++) {
+        const hourKey = hourKeys[j];
+        const hourValue = dayValue[hourKey];
+        const timeSlotKeys = Object.keys(hourValue)
+        for(let k = 0; k < timeSlotKeys.length; k++) {
+          const timeSlotKey = timeSlotKeys[k]
+          const eventValue = hourValue[timeSlotKey]
+
+          // ONLY PUSH IF isOwner or isJoiner
+
+          const {joiners} = eventValue;
+          const isJoiner = joiners && joiners.map(u => u.username).includes(this.props.currentUsername)
+
+          if (isJoiner) {
+            eventArr.push(eventValue) 
+          }
+        }
+      }
+      
+    }
+    
+    return eventArr
+    
   }
 
   render() {
@@ -27,6 +70,8 @@ class Dashboard extends Component {
         <h1>Schedule With Me</h1>
         <br />
         <NavBar onLogOut={() => this.props.dispatch(clearAuth())}/>
+        <br />
+        <Sessions sessions={this.flattenEvents(this.props.events)}/>
         <br />
         <WeekNavigation />
         <br />
@@ -46,7 +91,8 @@ const mapReduxStoreToProps = reduxStore => ({
   addForm: reduxStore.main.addForm, // ...main.... because we use more than one reducer
   events: reduxStore.main.events,
   selectedTimeSlots: reduxStore.main.selectedTimeSlots,
-  isLoggedIn: reduxStore.auth.currentUser
+  isLoggedIn: reduxStore.auth.currentUser,
+  currentUsername: reduxStore.auth.currentUser.username
 })
 
 export default RequiresLogin()(connect(mapReduxStoreToProps)(Dashboard));

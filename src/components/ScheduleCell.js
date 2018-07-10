@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
-import {deleteEvents, requestEvent} from '../actions/index';
 
-function ScheduleCell({joiners, currentUsername, owner, name, where, when, deleteEvents, requestEvent, cancelEvent, ...otherProps }) {
+function ScheduleCell({joiners, currentUsername, owner, name, where, when, deleteEvents, requestEvent, cancelEvent, onAddSession, ...otherProps }) {
     console.log('here', joiners, currentUsername)
         const areYouOwner = owner.username === currentUsername;
         const areYouAJoiner = joiners && joiners.map(u => u.username).includes(currentUsername)
+
+
         return (
             <div className="cell">
                 <h3>{name}</h3>

@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import moment from 'moment';
 
 export const SHOW_FORM = 'SHOW_FORM';
 export const showForm = ({weekday, hour, timeSlot}) => ({
@@ -65,7 +66,9 @@ export const changeWeek = ({back, forward}) => ({
 export const getEvents = () => (dispatch, getState) => {
     console.log('in getEvents')
    const authToken = getState().auth.authToken; 
-    return fetch(`${API_BASE_URL}/events`, {
+   const weekStartDate = moment(getState().main.selectedWeekStartDate).format('YYYY-MM-DD HH:mm:ss');
+   console.log(weekStartDate, 'weekStartDate');
+    return fetch(`${API_BASE_URL}/events?weekStartDate=${weekStartDate}`, {
         method: 'GET',
         headers: {
             // Provide our existing token as credentials to get a new one
@@ -80,6 +83,8 @@ export const getEvents = () => (dispatch, getState) => {
 
 export const scheduleEvent = (addEvent) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
+    addEvent.weekStartDate = moment(getState().main.selectedWeekStartDate).format('YYYY-MM-DD HH:mm:ss');
+    console.log(addEvent.weekStartDate, 'weekStartDate');
     fetch(`${API_BASE_URL}/events`, {
         method: 'POST',
         //need headers if express.json is used
@@ -129,5 +134,10 @@ export const cancelEvent = (id) => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(eventId => dispatch(cancelEventSuccess(eventId)))
     .then(() => dispatch(getEvents()))
+}
+
+export const changeWeekThunk = (param) => (dispatch) => {
+    dispatch(changeWeek(param));
+    dispatch(getEvents())
 }
 
