@@ -10,7 +10,7 @@ class Sessions extends Component {
             </li>
         ) : null;
         return (
-            <div>
+            <div className="Sessions">
                 {sessions}
             </div>
         )

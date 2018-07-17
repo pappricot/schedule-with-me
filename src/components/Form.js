@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import './Form.css';
+import '../basic.css';
 
 class Form extends Component {
 
@@ -31,7 +31,7 @@ class Form extends Component {
     return (
 				<div className="Form">
         <form onSubmit={this.handleSubmit.bind(this)}>
-            <label>Don't see a time that suits you? Create your event: </label>
+            <label>Create your event: </label>
 						<input 
 							type="text" 
 							name="name" 
@@ -54,7 +54,8 @@ class Form extends Component {
 							value={this.state.when}
 							onChange={(e) => {this.setState({when: e.target.value})}}
 						/>
-						<input 
+						<br />
+						<input className="button"
 							type="submit" 
 							value="Schedule"
 							disabled={!this.state.name || !this.state.where || !this.state.when}

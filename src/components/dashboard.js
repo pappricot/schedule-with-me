@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {getEvents} from '../actions/index';
 import {clearAuth} from '../actions/auth';
 
-import './dashboard.css';
+import '../basic.css';
+import '../grid.css';
 
 import CalendarBody from './CalendarBody';
 import NavBar from './NavBar';
@@ -66,7 +67,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="App" id="background-image">
+      <div className="container" id="background-image">
         <h1>Schedule With Me</h1>
         <br />
         <NavBar onLogOut={() => this.props.dispatch(clearAuth())}/>

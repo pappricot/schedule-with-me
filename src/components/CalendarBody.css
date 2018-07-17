@@ -2,6 +2,7 @@
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    background-color: #555555;
 }
 
 #calendar td, #calendar th {
@@ -9,7 +10,7 @@
     padding: 8px;
 }
 
-#calendar tr:nth-child(even){background-color: #f2f2f2;}
+#calendar tr:nth-child(even){background-color: grey}
 
 #calendar td:hover {background-color: #ddd;}
 

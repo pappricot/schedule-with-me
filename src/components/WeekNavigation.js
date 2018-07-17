@@ -10,11 +10,11 @@ function WeekNavigation({selectedWeekStartDate, dispatch}) {
     
 
     return (
-        <div>
+        <div className="WeekNavigation">
             <h2>{moment().format("MMM D")}</h2>
             <h3>Your torture ends {now.to(nextYear)} till 2019. <br />Bring up your focus and productivity!</h3>
-            <button onClick={() => dispatch(changeWeekThunk({back: true}))}>Back</button>
-            <button onClick={() => dispatch(changeWeekThunk({forward: true}))}>Forward</button>
+            <button className="button "id="Back" onClick={() => dispatch(changeWeekThunk({back: true}))}>&#10094;</button>
+            <button className="button" id="Forward" onClick={() => dispatch(changeWeekThunk({forward: true}))}>&#10095;</button>
         </div>
     )
 }

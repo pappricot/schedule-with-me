@@ -4,6 +4,8 @@ import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import "./registration-form.css";
+
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
@@ -49,8 +51,10 @@ export class RegistrationForm extends React.Component {
                     validate={[required, nonEmpty, matchesPassword]}
                 />
                 <button
+                    className="button"
                     type="submit"
-                    disabled={this.props.pristine || this.props.submitting}>
+                    disabled={this.props.pristine || this.props.submitting}
+                >
                     Register
                 </button>
             </form>

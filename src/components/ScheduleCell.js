@@ -15,14 +15,14 @@ function ScheduleCell({joiners, currentUsername, owner, name, where, when, delet
                 
                 {areYouOwner
                  &&
-                <button 
+                <button  className="button"
                     onClick={
                         e => {e.stopPropagation() // to stop bubbling up and prevent the form to show up
                              deleteEvents()
                         }
                         
                     } 
-                    className="btn btn-default"
+                   
                 >
                     Delete
                 </button>
@@ -30,7 +30,7 @@ function ScheduleCell({joiners, currentUsername, owner, name, where, when, delet
                 {!areYouOwner && !areYouAJoiner
                 &&
                 <div>
-                <button
+                <button className="button"
                     onClick={
                         e => {e.stopPropagation()
                         requestEvent()
@@ -44,7 +44,7 @@ function ScheduleCell({joiners, currentUsername, owner, name, where, when, delet
                 }
                 {!areYouOwner && areYouAJoiner && 
                             <div>
-                            <button
+                            <button className="button"
                                 onClick={
                                     e => {e.stopPropagation()
                                     cancelEvent()

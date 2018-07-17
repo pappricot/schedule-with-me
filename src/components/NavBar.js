@@ -11,16 +11,16 @@ class NavBar extends Component {
 
   render() {
     return (
-      <div className="dashboard">
-                <div className="dashboard-username">
+      <div className="NavBar">
+                <div className="navbar username">
                     Username: {this.props.username}
                 </div>
-                <div className="dashboard-name">Name: {this.props.name}</div>
-                <div className="dashboard-protected-data">
+                <div className="navbar name">Name: {this.props.name}</div>
+                <div className="navbar protected-data">
                     Protected data: {this.props.protectedData}
                 </div>
                 <br />
-                  <button onClick={
+                  <button className="button" onClick={
                           e => {e.preventDefault() // to stop bubbling up and prevent the form to show up
                               this.props.onLogOut()
                               //how to connect to logOUtPage to redirect to '/'?
