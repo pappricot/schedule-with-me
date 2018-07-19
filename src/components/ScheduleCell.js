@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-function ScheduleCell({joiners, currentUsername, owner, name, where, when, deleteEvents, requestEvent, cancelEvent, onAddSession, ...otherProps }) {
+function ScheduleCell({joiners, currentUsername, owner, name, purpose, where, deleteEvents, requestEvent, cancelEvent, onAddSession, ...otherProps }) {
     console.log('here', joiners, currentUsername)
         const areYouOwner = owner.username === currentUsername;
         const areYouAJoiner = joiners && joiners.map(u => u.username).includes(currentUsername)
@@ -10,9 +10,19 @@ function ScheduleCell({joiners, currentUsername, owner, name, where, when, delet
         return (
             <div className="cell">
                 <h3>{name}</h3>
+                <p>{purpose}</p>
                 <p>{where}</p>
-                <p>{when}</p>
-                
+                {areYouOwner
+                &&
+                joiners.length > 0
+                &&
+                <p>
+                    <strong>
+                        Scheduled with {joiners[0].username}
+                    </strong>
+                </p>
+
+                }
                 {areYouOwner
                  &&
                 <button  className="button"

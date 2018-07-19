@@ -31,7 +31,7 @@ class Form extends Component {
     return (
 				<div className="Form">
         <form onSubmit={this.handleSubmit.bind(this)}>
-            <label>Create your event: </label>
+            <label>Don't see a time that suits you? Create your event: </label>
 						<input 
 							type="text" 
 							name="name" 
