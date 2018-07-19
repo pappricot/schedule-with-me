@@ -14,7 +14,7 @@ h1, h2 {
     text-align: center
 }
 
-.NavBar, .WeekNavigation, .Form, .CalendarBody {
+.NavBar, .WeekNavigation, .Form, .CalendarBody, .Sessions, .session {
     padding: 70px 10px;
     width: auto;
     background:pink;

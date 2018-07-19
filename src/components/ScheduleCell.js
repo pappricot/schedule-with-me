@@ -54,6 +54,7 @@ function ScheduleCell({joiners, currentUsername, owner, name, purpose, where, de
                 }
                 {!areYouOwner && areYouAJoiner && 
                             <div>
+                            <p> Scheduled! </p>
                             <button className="button"
                                 onClick={
                                     e => {e.stopPropagation()

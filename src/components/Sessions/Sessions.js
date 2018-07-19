@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Session from "./Session";
+import '../../basic.css';
 
 class Sessions extends Component {
 
@@ -11,7 +12,14 @@ class Sessions extends Component {
         ) : null;
         return (
             <div className="Sessions">
-                {sessions}
+                {(sessions.length>0) ?
+                <p>Upcoming sessions</p> :
+                <p>Nothing scheduled yet</p>
+                }
+                
+                <ul>
+                    {sessions}
+                </ul>
             </div>
         )
     }
