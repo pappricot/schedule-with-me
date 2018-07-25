@@ -105,7 +105,7 @@ export const deleteEvents = (id) => (dispatch, getState) => {
         }
     })
     .then(res => normalizeResponseErrors(res))
-    .then(eventId => dispatch(deleteEventsSuccess(eventId)))
+    .then(() => dispatch(deleteEventsSuccess(id)))
     .then(() => dispatch(getEvents()))
 }
 

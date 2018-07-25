@@ -10,18 +10,22 @@ class Sessions extends Component {
                 <Session {...session} />
             </li>
         ) : null;
-        return (
-            <div className="Sessions">
-                {(sessions.length>0) ?
-                <p>Upcoming sessions</p> :
-                <p>Nothing scheduled yet</p>
-                }
-                
-                <ul>
-                    {sessions}
-                </ul>
-            </div>
-        )
+
+        if (this.props.selectedWeekStartDate /**&& (this.props.joiners > 0)**/) {
+            return (
+                <div className="Sessions">
+                    {(sessions.length>0) ?
+                    <p>Upcoming sessions</p> :
+                    <p>Nothing scheduled yet</p>
+                    }
+                    
+                    <ul>
+                        {sessions}
+                    </ul>
+                </div>
+            )
+        }
+        
     }
 }
 

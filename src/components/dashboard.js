@@ -19,7 +19,7 @@ import Sessions from './Sessions/Sessions';
 
 
 
-class Dashboard extends Component {
+export class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.flattenEvents = this.flattenEvents.bind(this);
@@ -50,12 +50,15 @@ class Dashboard extends Component {
 
           // ONLY PUSH IF isOwner or isJoiner
 
-          const {joiners} = eventValue;
+          const {joiners, owner} = eventValue;
           const isJoiner = joiners && joiners.map(u => u.username).includes(this.props.currentUsername)
+          const isOwner = owner && owner.username === this.props.currentUsername
 
-          if (isJoiner) {
+          if (isJoiner || isOwner) {
             eventArr.push(eventValue) 
           }
+
+          
         }
       }
       
@@ -72,7 +75,9 @@ class Dashboard extends Component {
         <br />
         <NavBar onLogOut={() => this.props.dispatch(clearAuth())}/>
         <br />
-        <Sessions sessions={this.flattenEvents(this.props.events)}/>
+        <Sessions sessions={this.flattenEvents(this.props.events)}
+                  selectedWeekStartDate={this.props.selectedWeekStartDate}
+        />
         <br />
         <WeekNavigation />
         <br />
@@ -93,7 +98,8 @@ const mapReduxStoreToProps = reduxStore => ({
   events: reduxStore.main.events,
   selectedTimeSlots: reduxStore.main.selectedTimeSlots,
   isLoggedIn: reduxStore.auth.currentUser,
-  currentUsername: reduxStore.auth.currentUser.username
+  currentUsername: reduxStore.auth.currentUser.username,
+  selectedWeekStartDate: reduxStore.main.selectedWeekStartDate
 })
 
 export default RequiresLogin()(connect(mapReduxStoreToProps)(Dashboard));

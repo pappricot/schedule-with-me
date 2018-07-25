@@ -40,7 +40,7 @@ export class App extends React.Component {
 
     render() {
         return (
-            <div className="app">
+            <div className="app for-phone-only for-tablet-portrait-up">
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/register" component={RegistrationPage} />

@@ -4,13 +4,17 @@
 ul {list-style-type: none;}
 body {
     font-family: Verdana, sans-serif;
-    background-color: #555555
+    background-color: #fafafa;
 }
 
+.app{
+    margin:100px auto;
+    width:809px;
+  }
 
 /* Nav Bar */
-h1, h2 {
-    color: white;
+h1 {
+    color:  #555555;
     text-align: center
 }
 
