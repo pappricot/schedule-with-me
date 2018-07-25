@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {getEvents} from '../actions/index';
 import {clearAuth} from '../actions/auth';
 
-import '../basic.css';
 import '../grid.css';
 
 import CalendarBody from './CalendarBody';

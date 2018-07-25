@@ -1,3 +1,5 @@
+@import "./media-queries.scss";
+
 * {
     box-sizing: border-box;
 } 
@@ -7,10 +9,15 @@ body {
     background-color: #fafafa;
 }
 
-.app{
-    margin:100px auto;
-    width:809px;
-  }
+.app{   
+    width: 100%;
+    @include for-phone-only {
+        .cell p, .cell h3{
+        display: none
+    }
+}
+    @include for-tablet-landscape-up {width:809px; margin:100px auto;}
+}
 
 /* Nav Bar */
 h1 {
@@ -26,11 +33,17 @@ h1 {
     color: white
 }
 
-.Form, .home {
+.Form, .home{
     margin: auto;
     padding: 30px 10px;
     width: 30%;
-    color: white
+    color: white;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+input {
+    width: 30%;
 }
 
 .CalendarBody .day {
@@ -56,13 +69,11 @@ h1 {
     background-color: #555555;
     border: none;
     color: white;
-    padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    font-size: 8px;
+    overflow: hidden;
 }
 
 .WeekNavigation #Back{
@@ -112,4 +123,8 @@ h1 {
     padding: 5px;
     background: #1abc9c;
     color: white !important
+}
+
+table#calendar {
+    table-layout: fixed;
 }

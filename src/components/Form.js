@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../basic.css';
 
 class Form extends Component {
 
@@ -31,7 +30,8 @@ class Form extends Component {
     return (
 				<div className="Form">
         <form onSubmit={this.handleSubmit.bind(this)}>
-            <label>Don't see a time that suits you? Create your event: </label>
+						<h3>Don't see a time that suits you? Create your event:</h3>
+            <label>Name</label>
 						<input 
 							type="text" 
 							name="name" 

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../basic.css';
 
 function Session ({name, where, when}) {
     return (
