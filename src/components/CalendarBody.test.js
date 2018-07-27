@@ -27,16 +27,16 @@ describe('<CalendarBody />', () => {
 //     })
 
     it('should render without crashing', () => {
-        let seedLists = [];
-        beforeAll(() => {
-            for (let i = 0; i < 6; i++) {
-                seedLists.push({
-                    weekdays: ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                    hoursOfDay: [1,2,3,4,5,6,7],
-                    timeSlots:[1,2]
-                });
-            }
-        });
+        // let seedLists = [];
+        // beforeAll(() => {
+        //     for (let i = 0; i < 6; i++) {
+        //         seedLists.push({
+        //             weekdays: ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        //             hoursOfDay: [1,2,3,4,5,6,7],
+        //             timeSlots:[1,2]
+        //         });
+        //     }
+        // });
 
         shallow(<CalendarBody />)
     })

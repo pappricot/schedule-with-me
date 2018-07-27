@@ -72,11 +72,13 @@ export class Dashboard extends Component {
       <div className="container" id="background-image">
         <h1>Schedule With Me</h1>
         <br />
+        <div className="col-sm-12">
         <NavBar onLogOut={() => this.props.dispatch(clearAuth())}/>
         <br />
         <Sessions sessions={this.flattenEvents(this.props.events)}
                   selectedWeekStartDate={this.props.selectedWeekStartDate}
         />
+        </div>
         <br />
         <WeekNavigation />
         <br />

@@ -12,10 +12,8 @@ describe('<Session />', () => {
 describe('<Session />', () => {
     it('renders correct props', () => {
         const name = "Anya";
-        const where = "Google Hangout";
-        const when = "12pm"
-        const wrapper = shallow(<Session name={name}  where={where} when={when}/>);
-        expect(wrapper.contains(<h3>{name} {where}</h3>)).toEqual(true);
-        expect(wrapper.contains(<p>{when}</p>)).toEqual(true);
+        const where = "Google Hangout"
+        const wrapper = shallow(<Session name={name}  where={where}/>);
+        expect(wrapper.contains(<p>{name} at {where}</p>)).toEqual(true);
     })
 })

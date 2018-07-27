@@ -55,7 +55,7 @@ class Form extends Component {
 							onChange={(e) => {this.setState({when: e.target.value})}}
 						/>
 						<br />
-						<input className="button"
+						<input className="button btn btn-default"
 							type="submit" 
 							value="Schedule"
 							disabled={!this.state.name || !this.state.where || !this.state.when}

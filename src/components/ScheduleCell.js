@@ -8,7 +8,7 @@ function ScheduleCell({joiners, currentUsername, owner, name, purpose, where, de
 
 
         return (
-            <div className="cell">
+            <div className="cell for-phone-only for-tablet-portrait-up for-tablet-portait-only">
                 <h3>{name}</h3>
                 <p>{purpose}</p>
                 <p>{where}</p>
@@ -25,7 +25,7 @@ function ScheduleCell({joiners, currentUsername, owner, name, purpose, where, de
                 }
                 {areYouOwner
                  &&
-                <button  className="button"
+                <button  className="button btn btn-default for-phone-only for-tablet-portrait-up for-tablet-portait-only"
                     onClick={
                         e => {e.stopPropagation() // to stop bubbling up and prevent the form to show up
                              deleteEvents()
@@ -40,7 +40,7 @@ function ScheduleCell({joiners, currentUsername, owner, name, purpose, where, de
                 {!areYouOwner && !areYouAJoiner
                 &&
                 <div>
-                <button className="button"
+                <button className="button btn btn-default for-phone-only for-tablet-portrait-up for-tablet-portait-only"
                     onClick={
                         e => {e.stopPropagation()
                         requestEvent()
@@ -54,8 +54,8 @@ function ScheduleCell({joiners, currentUsername, owner, name, purpose, where, de
                 }
                 {!areYouOwner && areYouAJoiner && 
                             <div>
-                            <p> Scheduled! </p>
-                            <button className="button"
+                            <p><strong> Scheduled! </strong></p>
+                            <button className="button btn btn-default for-phone-only for-tablet-portrait-up for-tablet-portait-only"
                                 onClick={
                                     e => {e.stopPropagation()
                                     cancelEvent()

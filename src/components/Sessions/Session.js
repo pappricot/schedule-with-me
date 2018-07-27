@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Session ({name, where, when}) {
+function Session ({name, where}) {
     return (
         <div className="session">
-            <h3>{name} {where}</h3>
-            <p>{when}</p>
+            <p>{name} at {where}</p>
+            <hr />
         </div>
     )
 }

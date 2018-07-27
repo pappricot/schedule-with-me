@@ -14,7 +14,7 @@ class Sessions extends Component {
             return (
                 <div className="Sessions">
                     {(sessions.length>0) ?
-                    <p>Upcoming sessions</p> :
+                    <h4>Upcoming sessions</h4> :
                     <p>Nothing scheduled yet</p>
                     }
                     

@@ -12,9 +12,9 @@ export function LandingPage(props) {
 
     return (
         <div className="home">
-            <h2>Welcome to Foo App</h2>
+            <h2>Schedule With Me</h2>
             <LoginForm />
-            <Link to="/register">Register</Link>
+            <p>New to us? Click here: <Link to="/register" className="btn btn-default">Register</Link></p>
         </div>
     );
 }

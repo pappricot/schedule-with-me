@@ -1,14 +1,13 @@
+
 .login-form {
     margin: auto;
     width: 70%;
-    color: white;
     text-align: auto
 }
 
 .button {
     background-color: #555555;
     border: none;
-    color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;

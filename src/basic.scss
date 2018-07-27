@@ -7,6 +7,7 @@ ul {list-style-type: none;}
 body {
     font-family: Verdana, sans-serif;
     background-color: #fafafa;
+    color: #555555;
 }
 
 .app{   
@@ -19,31 +20,59 @@ body {
     @include for-tablet-landscape-up {width:809px; margin:100px auto;}
 }
 
-/* Nav Bar */
-h1 {
+h1, h2 {
     color:  #555555;
     text-align: center
 }
 
-.NavBar, .WeekNavigation, .Form, .CalendarBody, .Sessions, .session {
-    padding: 70px 10px;
-    width: auto;
-    background:pink;
-    text-align: center;
-    color: white
+hr {
+    background-color: black
 }
 
-.Form, .home{
+.NavBar, .WeekNavigation, Form, .CalendarBody, .Sessions, .session {
+    margin: 10px;
+    text-align: center;
+}
+
+.NavBar, .WeekNavigation, Form, .CalendarBody, .Sessions {
+    padding: 60px 20px;
+}
+
+.Form {
+    background-color: pink;
+}
+
+.NavBar {
+    background-color: lavender;
+}
+
+.Sessions, .session {
+    background-color: #E4E4FF;
+}
+
+.WeekNavigation {
+    background-color: #FDFD96
+}
+
+.home {
+    background-color: lavender;
+}
+
+.home p {
+    text-align: center
+}
+
+.Form{
     margin: auto;
     padding: 30px 10px;
-    width: 30%;
-    color: white;
+    width: 50%;
     overflow: hidden;
     table-layout: fixed;
 }
 
 input {
     width: 30%;
+    color: black;
 }
 
 .CalendarBody .day {
@@ -65,16 +94,55 @@ input {
     letter-spacing: 3px;
 }
 
-.button {
+.hour {
+    color: white;
+    opacity: 0.5;
+}
+
+.cell {
+    color: white;
+    @include for-phone-only {
+        h3, p {
+            font-size: 7px;
+        }
+    }
+    @include for-tablet-portrait-up {
+        h3, p {
+            font-size: 9px;
+        }
+    }
+    @include for-tablet-landscape-up {
+        h3, p {
+            font-size: 11px;
+        }
+    }
+}
+
+.button.btn.btn-default{
     background-color: #555555;
     border: none;
     color: white;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 8px;
+    font-size: 16px;
     overflow: hidden;
+
+    &:not(#Forward):not(#Back)  {
+        @include for-phone-only {
+            padding: 8px 3px;
+            font-size: 8px
+        }
+        @include for-tablet-portrait-up {
+            padding: 7px 5px;
+            font-size: 9px
+        }
+        @include for-tablet-landscape-up {
+            padding: 12px 8px;
+            font-size: 14px;
+        }
+    }
 }
+
 
 .WeekNavigation #Back{
     float: left;

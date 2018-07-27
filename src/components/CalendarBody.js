@@ -23,13 +23,15 @@ export class CalendarBody extends Component {
 								console.log('weekday', weekday)
 								console.log(this.props.selectedWeekStartDate, 'selectedWeekStartDate')
 								const currentDay = moment(this.props.selectedWeekStartDate).add(index, 'days').format('dddd')
+								const currentDayShort = moment(this.props.selectedWeekStartDate).add(index, 'days').format('ddd')
 								const currentDate = moment(this.props.selectedWeekStartDate).add(index, 'days').format('D')
 								return (
 									
 										<th key={weekday}>
 										<span className="day">{currentDate}</span>
 										<br />
-										<span className="long">{currentDay}</span>
+										<span className="d-md-none">{currentDayShort}</span>
+										<span className="d-none d-md-block">{currentDay}</span>
 										</th>
 									
 								)}
@@ -69,6 +71,7 @@ export class CalendarBody extends Component {
 											return (
 							
 												// make the cell that is selected distinguishable, set a class to change in css file
+												this.props.selectedTimeSlots &&
 												<td className={(this.props.selectedTimeSlots.find(selectedTimeSlot => 
 												 selectedTimeSlot.weekday === weekday &&
 												 selectedTimeSlot.hour === hour &&
