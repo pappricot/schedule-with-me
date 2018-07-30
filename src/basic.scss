@@ -127,6 +127,10 @@ input {
     font-size: 16px;
     overflow: hidden;
 
+    &.btn-special {
+        border: 5px red solid;
+    }
+
     &:not(#Forward):not(#Back)  {
         @include for-phone-only {
             padding: 8px 3px;
