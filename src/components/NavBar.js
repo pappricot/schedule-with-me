@@ -16,9 +16,6 @@ class NavBar extends Component {
                     Username: {this.props.username}
                 </h4>
                 <h4 className="navbar name">Name: {this.props.name}</h4>
-                <h4 className="navbar protected-data">
-                    Protected data: {this.props.protectedData}
-                </h4>
                 <br />
                   <button className="button btn btn-default" onClick={
                           e => {e.preventDefault() // to stop bubbling up and prevent the form to show up
