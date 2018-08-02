@@ -32,10 +32,16 @@ hr {
 .NavBar, .WeekNavigation, Form, .CalendarBody, .Sessions, .session {
     margin: 10px;
     text-align: center;
+    transition-timing-function: ease-out;
 }
 
 .NavBar, .WeekNavigation, Form, .CalendarBody, .Sessions {
     padding: 60px 20px;
+}
+
+.session:hover {
+    transition-duration: 1s;
+    font-size: 180%
 }
 
 .Form {
@@ -58,7 +64,7 @@ hr {
     background-color: lavender;
 }
 
-.home p {
+.home p, .login-button {
     text-align: center
 }
 
@@ -133,15 +139,15 @@ input {
 
     &:not(#Forward):not(#Back)  {
         @include for-phone-only {
-            padding: 8px 3px;
+            padding: 5px 8px;
             font-size: 8px
         }
         @include for-tablet-portrait-up {
-            padding: 7px 5px;
+            padding: 7px 9px;
             font-size: 9px
         }
         @include for-tablet-landscape-up {
-            padding: 12px 8px;
+            padding: 9px 12px;
             font-size: 14px;
         }
     }

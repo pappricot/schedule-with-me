@@ -15,7 +15,7 @@ export function RegistrationPage(props) {
             <h2>Register for Foo App</h2>
             {props.error && <span>{props.error.message}</span>}
             <RegistrationForm />
-            <Link to="/">Login</Link>
+            <Link to="/" className="login-button">Login</Link>
         </div>
     );
 }

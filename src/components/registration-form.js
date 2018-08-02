@@ -50,6 +50,7 @@ export class RegistrationForm extends React.Component {
                     name="passwordConfirm"
                     validate={[required, nonEmpty, matchesPassword]}
                 />
+                <br />
                 <button
                     className="button btn btn-default"
                     type="submit"
