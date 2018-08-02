@@ -1,5 +1,7 @@
 <h1>SCHEDULE WITH ME</h1>
 Live link: https://schedule-with-me.netlify.com/
+client github repo: https://github.com/pappricot/schedule-with-me-client
+server github repo: https://github.com/pappricot/schedule-with-me-server
 
 <h3>Description</h3> 
 Inspiried by remote pair-programming, which proves that we tend to work more productively in groups, this mini app will allow users to create an event and let other users join them. Say no to procrastination.
