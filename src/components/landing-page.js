@@ -1,8 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import './landing-page.css';
 
 import LoginForm from './login-form';
+import LoginFormB from './login-form-bootstrap';
 
 export function LandingPage(props) {
     // If we are logged in redirect straight to the user's dashboard
@@ -13,7 +15,7 @@ export function LandingPage(props) {
     return (
         <div className="home">
             <h2>Schedule With Me</h2>
-            <LoginForm />
+            <LoginFormB />
             <p>New to us? Click here: <Link to="/register" className="btn btn-default">Register</Link></p>
         </div>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import './login-form.css';
 
 export default class Input extends React.Component {
     componentDidUpdate(prevProps) {
@@ -22,15 +23,16 @@ export default class Input extends React.Component {
 
         return (
             <div className="form-input">
-                <label htmlFor={this.props.input.name}>
+                {/* <label htmlFor={this.props.input.name}>
                     {this.props.label}
                     {error}
                     {warning}
-                </label>
+                </label> */}
                 <input
                     {...this.props.input}
                     id={this.props.input.name}
                     type={this.props.type}
+                    placeholder={this.props.placeholder}
                     ref={input => (this.input = input)}
                 />
             </div>

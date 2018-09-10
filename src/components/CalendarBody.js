@@ -1,10 +1,11 @@
+import moment from 'moment';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './CalendarBody.css';
-import  ScheduleCell from './ScheduleCell';
-import { deleteEvents, requestEvent, cancelEvent } from '../actions/index';
+import { cancelEvent, deleteEvents, requestEvent } from '../actions/index';
 import { addSession } from '../actions/sessions';
-import moment from 'moment';
+import './CalendarBody.css';
+import ScheduleCell from './ScheduleCell';
+import { watchFile } from 'fs';
 
 const weekdays = ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const hoursOfDay = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
