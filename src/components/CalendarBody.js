@@ -6,6 +6,8 @@ import { addSession } from '../actions/sessions';
 import './CalendarBody.css';
 import ScheduleCell from './ScheduleCell';
 import { watchFile } from 'fs';
+import Form from './Form';
+import { scheduleEvent } from '../actions';
 
 const weekdays = ['Monday', 'Tuesday', 'Wedndesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const hoursOfDay = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
@@ -16,6 +18,7 @@ export class CalendarBody extends Component {
   render() {
     return (
       <div className="CalendarBody">
+	  {(this.props.selectedTimeSlots.length > 0) && <Form scheduleEvent={(eventToSchedule) => this.props.dispatch(scheduleEvent(eventToSchedule))}/>}
         <table id="calendar">
 					<thead>
 						<tr>
