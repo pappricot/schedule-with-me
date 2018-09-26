@@ -1,25 +1,28 @@
-<h1>SCHEDULE WITH ME</h1>
-<p>Live link: https://schedule-with-me.netlify.com/</p>
-<p>client github repo: https://github.com/pappricot/schedule-with-me-client</p>
-<p>server github repo: https://github.com/pappricot/schedule-with-me-server</p>
+#SCHEDULE WITH ME
 
-<h3>Description</h3> 
-<p>Inspiried by remote pair-programming, which proves that we tend to work more productively in groups, this mini app will allow users to create an event and let other users join them. Say no to procrastination.</p>
+Live link: https://schedule-with-me.netlify.com/
 
-<p>Log in / Landing page</p>:
+Client github repo: https://github.com/pappricot/schedule-with-me-client
+
+Server github repo: https://github.com/pappricot/schedule-with-me-server
+
+##Description
+Inspiried by remote pair-programming, which proves that we tend to work more productively in groups, this mini app will allow users to create an event and let other users join them. Say no to procrastination.
+
+Log in / Landing page:
 ![screenshot 30](https://user-images.githubusercontent.com/18382129/43613360-f51f7366-9663-11e8-9b2e-555384077ffe.png)
 
-<p>Registration for new user:</p>
+Registration for new user:
 ![screenshot 31](https://user-images.githubusercontent.com/18382129/43613388-0b1af366-9664-11e8-9cf6-18cacdde9352.png)
 
-<p>Navigation bar and upcoming sessions (get appended when other users request to join the session(event)):</p>
+Navigation bar and upcoming sessions (get appended when other users request to join the session(event)):
 ![screenshot 29](https://user-images.githubusercontent.com/18382129/43613441-32bc16ca-9664-11e8-9ca4-d13c3bf9707f.png)
 
-<p>Calendar where cells are clickable to create, delete your sessions and request, cancel request to join other sessions:</p>
+Calendar where cells are clickable to create, delete your sessions and request, cancel request to join other sessions:
 ![screenshot 32](https://user-images.githubusercontent.com/18382129/43613477-508b5ff8-9664-11e8-98ae-e2efa240518d.png)
 
 
-<h3>API Documentation</h3>
+##API Documentation
 <ul>
     <li> Users
        <ul>     
