@@ -1,5 +1,7 @@
 #SCHEDULE WITH ME
 
+![Logo](./phokus.jpg)
+
 Live link: https://schedule-with-me.netlify.com/
 
 Client github repo: https://github.com/pappricot/schedule-with-me-client
