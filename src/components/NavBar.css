@@ -1,23 +1,33 @@
 .NavBar {
   display: flex;
   flex: 1;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin: 0 0px 0 20px;
 }
 
 .info {
-  flex: 6;
-  display: inline-block;
+  flex-direction: row;
 }
 
 .buttonWrapper {
-  flex: 1;
-  display: inline-block;
-  align-self: flex-end;
+  align-self: center;
+}
+
+.btn.btnLogOut {
+  width: 100px;
+  height: 50px;
 }
 
 .btn {
   background-color: #f15352;
+  opacity: 0.8;
+}
+
+.btnText {
+  text-align: center;
+  font-size: 20px;
 }
 
 h4 {
@@ -27,4 +37,5 @@ h4 {
 .name {
   flex: 1;
   color: #fff;
+  display: inline-block;
 }

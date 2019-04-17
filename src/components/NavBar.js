@@ -18,14 +18,14 @@ class NavBar extends Component {
         </div>
         <div className="buttonWrapper">
           <button
-            className="btn"
+            className="btn btnLogOut"
             onClick={e => {
               e.preventDefault(); // to stop bubbling up and prevent the form to show up
               this.props.onLogOut();
               //how to connect to logOUtPage to redirect to '/'?
             }}
           >
-            <h4>Log Out</h4>
+            <h4 className="btnText">Log Out</h4>
           </button>
         </div>
       </div>

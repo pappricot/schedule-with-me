@@ -1,12 +1,14 @@
-import React from 'react';
-
-function Session ({name, where}) {
-    return (
-        <div className="session">
-            <p>{name} at {where}</p>
-            <hr />
-        </div>
-    )
+import React from "react";
+import "./session.css";
+function Session({ name, where }) {
+  return (
+    <div className="session">
+      <p className="sessionText">
+        {name} at {where}
+      </p>
+      <hr />
+    </div>
+  );
 }
 
-export default Session
+export default Session;

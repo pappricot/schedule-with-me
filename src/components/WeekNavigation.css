@@ -1,0 +1,17 @@
+.WeekNavigation {
+  display: flex;
+  flex: 1;
+  margin: 0 0px 0 20px;
+  align-items: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+h3,
+h4,
+button {
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+}
