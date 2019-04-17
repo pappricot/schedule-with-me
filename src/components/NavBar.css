@@ -1,0 +1,30 @@
+.NavBar {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  margin: 0 0px 0 20px;
+}
+
+.info {
+  flex: 6;
+  display: inline-block;
+}
+
+.buttonWrapper {
+  flex: 1;
+  display: inline-block;
+  align-self: flex-end;
+}
+
+.btn {
+  background-color: #f15352;
+}
+
+h4 {
+  color: #fff;
+}
+
+.name {
+  flex: 1;
+  color: #fff;
+}

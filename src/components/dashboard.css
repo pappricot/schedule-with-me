@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.navbar {
+  flex: 1;
+  justify-content: center;
+  align-content: center;
+  background-color: #f15352;
+  top: 20px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.sessionsList {
+  flex: 1;
+  justify-content: center;
+  align-content: center;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.weekNavigation {
+  flex: 1;
+  justify-content: center;
+  align-content: center;
+  background-color: #f15352;
+  top: 20px;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.calendarBody {
+  flex: 7;
+}
