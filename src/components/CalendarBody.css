@@ -1,34 +1,39 @@
 #calendar {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    background-color: #555555;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
-#calendar td, #calendar th {
-    border: 1px solid #ddd;
-    padding: 8px;
+#calendar td,
+#calendar th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-#calendar tr:nth-child(even){background-color: grey}
+/* #calendar tr:nth-child(even) {
+  background-color: #ddd;
+} */
 
-#calendar td:hover {background-color: #ddd;}
+#calendar td:hover {
+  background-color: #ddd;
+}
 
 #calendar th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    opacity: 0.5;
-    color: black;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  opacity: 0.5;
+  color: black;
+}
+.hour {
+  opacity: 0.5;
+  text-align: center;
 }
 
 #calendar th.col-sm-3 long {
-    display: none
+  display: none;
 }
 
 #calendar td.highlighted {
-    background-color:#999;
+  background-color: #999;
 }
-
-
-

@@ -1,0 +1,35 @@
+.cell {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-p1 {
+  flex: 1;
+  align-self: center;
+}
+
+.info-p2 {
+  flex: 1;
+  align-self: center;
+  text-align: left;
+}
+
+p {
+  align-self: center;
+  margin-right: 20px;
+}
+
+.buttonWraper {
+  display: flex;
+  flex: 3;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Scheduled {
+  margin-right: 20px;
+}
