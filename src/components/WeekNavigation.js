@@ -16,14 +16,14 @@ function WeekNavigation({ selectedWeekStartDate, dispatch }) {
         Bring up your focus and productivity!
       </h4>
       <button
-        className="button btn btn-default"
+        className="btn arrow"
         id="Back"
         onClick={() => dispatch(changeWeekThunk({ back: true }))}
       >
         &#10094;
       </button>
       <button
-        className="button btn btn-default"
+        className="btn arrow"
         id="Forward"
         onClick={() => dispatch(changeWeekThunk({ forward: true }))}
       >

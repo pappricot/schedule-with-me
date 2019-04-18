@@ -15,3 +15,23 @@ button {
   padding-bottom: 10px;
   padding-right: 30px;
 }
+
+.btn.arrow {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 50px;
+  flex-direction: row;
+}
+
+#Back {
+  flex: 1;
+  margin-right: 20px;
+}
+
+#Forward {
+  flex: 1;
+  margin-left: 20px;
+}
