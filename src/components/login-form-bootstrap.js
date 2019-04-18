@@ -65,7 +65,7 @@ export class LoginFormB extends React.Component {
 
                 <button
                   type="submit"
-                  class="btn btn-primary"
+                  class="btn loginBTN"
                   disabled={this.props.pristine || this.props.submitting}
                 >
                   Login
